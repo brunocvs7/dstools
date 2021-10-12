@@ -20,6 +20,7 @@ def check_dtypes(df:pd.DataFrame=None)-> dict:
     return column_types
 
 def check_missing(df:pd.DataFrame=None, list_columns:list=None, list_of_missing=None) -> pd.Series:
+
     '''
     Check missing values in the columns
 
@@ -31,17 +32,17 @@ def check_missing(df:pd.DataFrame=None, list_columns:list=None, list_of_missing=
             series_missing (pd.Series): A pandas series whose keys are the columns and values are the rate of missing values [0, 1].
             
     '''
-  if list_of_missing is not None:
-      for missing in list_of_missing:
-          df = df.replace({missing:None})
+    if list_of_missing is not None:
+        for missing in list_of_missing:
+            df = df.replace({missing:None})
 
-  if list_columns is None:
-    series_missing = (df.isna().sum()/len(df))
-    series_missing = series_missing.sort_values(ascending=False)
-  else:
-    series_missing = (df[list_columns].isna().sum()/len(df))
-    series_missing = series_missing.sort_values(ascending=False)
-  return series_missing
+    if list_columns is None:
+        series_missing = (df.isna().sum()/len(df))
+        series_missing = series_missing.sort_values(ascending=False)
+    else:
+        series_missing = (df[list_columns].isna().sum()/len(df))
+        series_missing = series_missing.sort_values(ascending=False)
+    return series_missing
 
 def check_constant_columns(df:pd.DataFrame=None, list_columns:list=None, threshold:float=0.85) -> tuple: 
     '''
