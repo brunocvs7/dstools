@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='dstools',
-    version='1.0.0',
+    version='1.0.1',
     author='Bruno Vieira',
     author_email='bcvs23270198@gmail.com',
     description='Package designed for data science projects',
